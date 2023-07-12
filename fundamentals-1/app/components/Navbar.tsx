@@ -4,7 +4,7 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   return (
-    <nav className="absolute w-full py-3 bg-indigo-800 flex justify-center items-center text-xl">
+    <nav className="w-full py-3 bg-indigo-800 flex justify-center items-center text-xl">
       Navbar
     </nav>
   );
