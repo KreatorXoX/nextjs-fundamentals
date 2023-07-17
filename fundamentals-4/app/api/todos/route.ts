@@ -1,10 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const origin = req.headers.get("origin");
   const response = await fetch(`${process.env.BASE_URL!}/todos`);
   const todos: Todo[] = await response.json();
 
-  return NextResponse.json(todos);
+  return new NextResponse(JSON.stringify(todos), {
+    headers: {
+      "Access-Control-Allow-Origin": origin || "*",
+      "Content-Type": "application/json",
+    },
+  });
 }
 
 export async function POST(req: Request) {
